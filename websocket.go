@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"crypto/tls"
 	"io"
+	"net"
 	"net/http"
 	"net/url"
 	"strings"
@@ -108,14 +109,17 @@ func (proxy *ProxyHttpServer) websocketHandshake(ctx *ProxyCtx, req *http.Reques
 
 func (proxy *ProxyHttpServer) proxyWebsocket(ctx *ProxyCtx, dest io.ReadWriter, source io.ReadWriter) {
 	errChan := make(chan error, 2)
-	cp := func(dst io.Writer, src io.Reader) {
-		_, err := io.Copy(dst, src)
-		ctx.Warnf("Websocket error: %v", err)
-		errChan <- err
-	}
-
+	// cp := func(dst io.Writer, src io.Reader) {
+	// 	_, err := io.Copy(dst, src)
+	// 	ctx.Warnf("Websocket error: %v", err)
+	// 	errChan <- err
+	// }
+	destConn, _ := dest.(net.Conn)
+	srcConn, _ := source.(net.Conn)
 	// Start proxying websocket data
-	go cp(dest, source)
-	go cp(source, dest)
+	go cp_websocket_frames(destConn, srcConn, errChan)
+	go cp_websocket_frames(srcConn, destConn, errChan)
+	// go cp(dest, source)
+	// go cp(source, dest)
 	<-errChan
 }
