@@ -182,6 +182,14 @@ func (pcond *ReqProxyConds) DoFunc(f func(req *http.Request, ctx *ProxyCtx) (*ht
 	pcond.Do(FuncReqHandler(f))
 }
 
+type WebsocketMessageProxyConds struct {
+	proxy *ProxyHttpServer
+}
+
+func (proxy *ProxyHttpServer) OnWebsocketMessage(f func(ctx *ProxyCtx, messageType int, data []byte, fromClient bool) []byte) {
+	proxy.websocketHandlers = append(proxy.websocketHandlers, WebsocketHandler(f))
+}
+
 // ReqProxyConds.Do will register the ReqHandler on the proxy,
 // the ReqHandler will handle the HTTP request if all the conditions
 // aggregated in the ReqProxyConds are met. Typical usage:

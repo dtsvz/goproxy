@@ -2,6 +2,7 @@ package goproxy
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"log"
 	"net"
@@ -19,13 +20,14 @@ type ProxyHttpServer struct {
 	// KeepDestinationHeaders indicates the proxy should retain any headers present in the http.Response before proxying
 	KeepDestinationHeaders bool
 	// setting Verbose to true will log information on each request sent to the proxy
-	Verbose         bool
-	Logger          Logger
-	NonproxyHandler http.Handler
-	reqHandlers     []ReqHandler
-	respHandlers    []RespHandler
-	httpsHandlers   []HttpsHandler
-	Tr              *http.Transport
+	Verbose           bool
+	Logger            Logger
+	NonproxyHandler   http.Handler
+	reqHandlers       []ReqHandler
+	respHandlers      []RespHandler
+	httpsHandlers     []HttpsHandler
+	websocketHandlers []WebsocketHandler
+	Tr                *http.Transport
 	// ConnectDial will be used to create TCP connections for CONNECT requests
 	// if nil Tr.Dial will be used
 	ConnectDial func(network string, addr string) (net.Conn, error)
@@ -74,6 +76,13 @@ func (proxy *ProxyHttpServer) filterResponse(respOrig *http.Response, ctx *Proxy
 		resp = h.Handle(resp, ctx)
 	}
 	return
+}
+
+func (proxy *ProxyHttpServer) filterWebsocketMessages(ctx *ProxyCtx, messageType int, data []byte, fromClient bool) []byte {
+	for _, h := range proxy.websocketHandlers {
+		return h(ctx, messageType, data, fromClient)
+	}
+	return nil
 }
 
 func removeProxyHeaders(ctx *ProxyCtx, r *http.Request) {
@@ -168,6 +177,7 @@ func (proxy *ProxyHttpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) 
 
 // NewProxyHttpServer creates and returns a proxy server, logging to stderr by default
 func NewProxyHttpServer() *ProxyHttpServer {
+	fmt.Println("Assssss")
 	proxy := ProxyHttpServer{
 		Logger:        log.New(os.Stderr, "", log.LstdFlags),
 		reqHandlers:   []ReqHandler{},

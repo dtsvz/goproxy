@@ -55,3 +55,6 @@ type FuncHttpsHandler func(host string, ctx *ProxyCtx) (*ConnectAction, string)
 func (f FuncHttpsHandler) HandleConnect(host string, ctx *ProxyCtx) (*ConnectAction, string) {
 	return f(host, ctx)
 }
+
+// WebsocketHandler for WS
+type WebsocketHandler func(ctx *ProxyCtx, messageType int, data []byte, fromClient bool) []byte

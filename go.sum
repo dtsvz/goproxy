@@ -1,11 +1,13 @@
-github.com/dtsvz/websocket v1.4.2 h1:hOxNpHU7V8B0ZzKUVIJ3lsc/POxldg7u6jijhf1MOPU=
-github.com/dtsvz/websocket v1.4.2/go.mod h1:xnBvt8jva0zFgK7R7rIgKZQE3qiiYNXEQIQBW15CBp0=
-github.com/dtsvz/websocket v1.4.3 h1:eQe7ewuESmhztzjPCHlJXIuKg+dHqG1mES+8sfjIdW0=
-github.com/dtsvz/websocket v1.4.3/go.mod h1:xnBvt8jva0zFgK7R7rIgKZQE3qiiYNXEQIQBW15CBp0=
 github.com/dtsvz/goproxy v0.0.0-20191011121108-aa519ddbe484 h1:pEtiCjIXx3RvGjlUJuCNxNOw0MNblyR9Wi+vJGBFh+8=
 github.com/dtsvz/goproxy v0.0.0-20191011121108-aa519ddbe484/go.mod h1:Ro8st/ElPeALwNFlcTpWmkr6IoMFfkjXAvTHpevnDsM=
 github.com/dtsvz/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2 h1:dWB6v3RcOy03t/bUadywsbyrQwCqZeNIEX6M1OtSZOM=
 github.com/dtsvz/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2/go.mod h1:gNh8nYJoAm43RfaxurUnxr+N1PwuFV3ZMl/efxlIlY8=
+github.com/dtsvz/goproxy/ext v0.0.0-20191212193923-98af0a8ab139 h1:bQUrFnl1TbVhAgQID7xp3Lt1MtlG9v/UecZvdfIDhZY=
+github.com/dtsvz/goproxy/ext v0.0.0-20191212193923-98af0a8ab139/go.mod h1:lnH6AT7Q5fxilUGVvg0zS0m7Ga1ZCpbmGrv2JiwJP44=
+github.com/dtsvz/websocket v1.4.2 h1:hOxNpHU7V8B0ZzKUVIJ3lsc/POxldg7u6jijhf1MOPU=
+github.com/dtsvz/websocket v1.4.2/go.mod h1:xnBvt8jva0zFgK7R7rIgKZQE3qiiYNXEQIQBW15CBp0=
+github.com/dtsvz/websocket v1.4.3 h1:eQe7ewuESmhztzjPCHlJXIuKg+dHqG1mES+8sfjIdW0=
+github.com/dtsvz/websocket v1.4.3/go.mod h1:xnBvt8jva0zFgK7R7rIgKZQE3qiiYNXEQIQBW15CBp0=
 github.com/gorilla/websocket v1.4.1 h1:q7AeDBpnBk8AogcD4DSag/Ukw/KV+YhzLj2bP5HvKCM=
 github.com/gorilla/websocket v1.4.1/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/rogpeppe/go-charset v0.0.0-20180617210344-2471d30d28b4/go.mod h1:qgYeAmZ5ZIpBWTGllZSQnw97Dj+woV0toclVaRGI8pc=
